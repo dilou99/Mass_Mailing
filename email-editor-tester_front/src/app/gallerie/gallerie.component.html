@@ -1,0 +1,109 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+/>
+<section class="bg-color">
+  <div class="containers">
+    <div class="title">
+      <h2><span>Template</span> Gallery</h2>
+      <p>Basic</p>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="discount">new</div>
+            <div class="image">
+              <img src="../../assets/blank.png" alt="Product" />
+            </div>
+            <div class="cart-line"></div>
+            <div class="cart-item">
+              <ul>
+                <li>
+                  <a class="button" (click)="blank()"
+                    >Select <i class="bi bi-check2-circle"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">blank</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="discount">new</div>
+            <div class="image">
+              <img src="../../assets/one_column.png" alt="Product" />
+            </div>
+            <div class="cart-line"></div>
+            <div class="cart-item">
+              <ul>
+                <li>
+                  <a class="button" (click)="oneColumn()"
+                    >Select <i class="bi bi-check2-circle"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">One Column</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="discount">new</div>
+
+            <div class="image">
+              <img src="../../assets/two_column.png" alt="Product" />
+            </div>
+            <div class="cart-line"></div>
+            <div class="cart-item">
+              <ul>
+                <li>
+                  <a class="button" (click)="twoColumn()"
+                    >Select <i class="bi bi-check2-circle"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">Two Column</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-main">
+            <div class="discount">new</div>
+
+            <div class="image">
+              <img src="../../assets/three_column.png" alt="Product" />
+            </div>
+            <div class="cart-line"></div>
+            <div class="cart-item">
+              <ul>
+                <li>
+                  <a class="button" (click)="threeColumn()"
+                    >Select <i class="bi bi-check2-circle"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="content">
+            <a href="javascript:void(0);">Three Column</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-editor [jsonLoad]="jsonLoad"> </app-editor>

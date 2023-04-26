@@ -1,4 +1,4 @@
-package com.example.email_editor_tester.user;
+package com.example.email_editor_tester.gallery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +19,13 @@ public class JsonController {
     }
 
     @GetMapping
-    public List<json> getAllJson() {
-        return jsonService.getJson();
+    public List<Json> getAllJson() {
+        return jsonService.getAllJsons();
     }
 
     @GetMapping("{id}")
-    public json getJson(@PathVariable Long id) {
-        return jsonService.findById(id);
+    public Json getJson(@PathVariable Long id) {
+        return jsonService.getJson(id);
     }
 
 

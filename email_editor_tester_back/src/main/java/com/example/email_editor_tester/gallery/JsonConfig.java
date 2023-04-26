@@ -1,4 +1,4 @@
-package com.example.email_editor_tester.user;
+package com.example.email_editor_tester.gallery;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ public class JsonConfig {
     @Bean
     CommandLineRunner commandLineRunner(JsonRepository repository) {
         return args ->{
-            json Blank = new json(
+            Json Blank = new Json(
                     "Blank",
                     "{\n" +
                             "    \"counters\": {\n" +
@@ -121,7 +121,7 @@ public class JsonConfig {
                             "    \"schemaVersion\": 13\n" +
                             "}"
             );
-            json oneColumn = new json(
+            Json oneColumn = new Json(
                     "One Column",
                     "{\n" +
                             "    \"counters\": {\n" +
@@ -632,7 +632,7 @@ public class JsonConfig {
                             "    \"schemaVersion\": 13\n" +
                             "}"
             );
-            json twoColumn = new json(
+            Json twoColumn = new Json(
                     "Two Column",
                     "{\n" +
                             "    \"counters\": {\n" +
@@ -1269,7 +1269,7 @@ public class JsonConfig {
                             "    \"schemaVersion\": 13\n" +
                             "}"
             );
-            json threeColumn = new json(
+            Json threeColumn = new Json(
                     "Three Column",
                     "{\n" +
                             "    \"counters\": {\n" +

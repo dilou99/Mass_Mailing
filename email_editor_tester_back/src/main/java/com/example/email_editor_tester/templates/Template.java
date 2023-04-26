@@ -5,32 +5,43 @@ import java.util.Date;
 
 @Entity
 @Table
-public class template {
+public class Template {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @Lob
-    @Column( nullable = false)
+    @Column(name = "json_data", nullable = false)
     private String jsonData;
+    @Lob
+    @Column(name = "html_data", nullable = false)
+    private String htmlData;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date creationDate;
 
-    public template() {
+    public Template() {
     }
 
-    public template(Long id, String name, String jsonData, Date creationDate) {
+    public Template(Long id, String name, String jsonData,String htmlData,Date creationDate) {
         this.id = id;
         this.name = name;
         this.jsonData = jsonData;
+        this.htmlData = htmlData;
         this.creationDate = creationDate;
     }
 
-    public template(String name, String jsonData, Date creationDate) {
+    public Template(String name, String jsonData, String htmlData, Date creationDate) {
         this.name = name;
         this.jsonData = jsonData;
+        this.htmlData = htmlData;
         this.creationDate = creationDate;
+    }
+
+    public Template(String name, String jsonData, String htmlData) {
+        this.name = name;
+        this.jsonData = jsonData;
+        this.htmlData = htmlData;
     }
 
     public Long getId() {
@@ -57,6 +68,14 @@ public class template {
         this.jsonData = jsonData;
     }
 
+    public String getHtmlData() {
+        return htmlData;
+    }
+
+    public void setHtmlData(String htmlData) {
+        this.htmlData = htmlData;
+    }
+
     public Date getCreationDate() {
         return creationDate;
     }
@@ -71,6 +90,7 @@ public class template {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", jsonData='" + jsonData + '\'' +
+                ", htmlData='" + htmlData + '\'' +
                 ", creationDate=" + creationDate +
                 '}';
     }

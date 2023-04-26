@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class json {
+public class Json {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,7 +13,7 @@ public class json {
     @Column( nullable = false)
     private String jsonData;
 
-    public json() {
+    public Json() {
     }
 
     public Long getId() {
@@ -33,7 +33,7 @@ public class json {
                 '}';
     }
 
-    public json(String name, String jsonData) {
+    public Json(String name, String jsonData) {
         this.name = name;
         this.jsonData = jsonData;
     }
@@ -54,7 +54,7 @@ public class json {
         this.jsonData = jsonData;
     }
 
-    public json(Long id, String name, String jsonData) {
+    public Json(Long id, String name, String jsonData) {
         this.id = id;
         this.name = name;
         this.jsonData = jsonData;

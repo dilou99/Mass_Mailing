@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface templateRepository extends JpaRepository<template,Long> {
+public interface TemplateRepository extends JpaRepository<Template,Long> {
 }

@@ -6,6 +6,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { EmailEditorComponent } from 'angular-email-editor';
+import { TemplateService } from '../services/template/template.service';
+import { Template } from '../shared/models/template';
 
 @Component({
   selector: 'app-editor',
@@ -14,6 +16,20 @@ import { EmailEditorComponent } from 'angular-email-editor';
 })
 export class EditorComponent implements OnInit {
   title = 'angular-email-editor';
+  savedJson!: string;
+  savedHtml!: string;
+  templateName: string = '';
+  template: Template = new Template();
+
+  onSubmit() {
+    if (!this.templateName) {
+      alert('The template name is required');
+      return;
+    }
+
+    console.log('Template name:', this.templateName);
+  }
+  constructor(private templateService: TemplateService) {}
 
   @Input() jsonLoad: any;
 
@@ -34,15 +50,12 @@ export class EditorComponent implements OnInit {
     this.emailEditor.editor.addEventListener(
       'design:updated',
       function (data: any) {
-        // Design is updated by the user
-        var type = data.type; // body, row, content
+        var type = data.type;
         var item = data.item;
         var changes = data.changes;
         console.log('design:updated', type, item, changes);
       }
     );
-    // load the design json here
-    console.log('this.jsonLoad: ', this.jsonLoad);
     const jsonLoadObj = JSON.parse(this.jsonLoad);
     this.emailEditor.editor.loadDesign(jsonLoadObj);
   }
@@ -71,7 +84,34 @@ export class EditorComponent implements OnInit {
       }
     );
   }
-  options() {
+
+  saveTemplate(): void {
+    this.emailEditor.editor.exportHtml(
+      (data: any) => {
+        var json = data.design;
+        var html = data.html;
+        this.savedJson = JSON.stringify(json);
+        this.savedHtml = html;
+        console.log(this.savedHtml, this.savedJson);
+        const currentDate = new Date();
+        if (this.templateName) {
+          this.template = new Template(
+            this.templateName,
+            this.savedJson,
+            this.savedHtml,
+            currentDate
+          );
+          console.log(this.template);
+          this.templateService.addTemplate(this.template).subscribe();
+        }
+      },
+      {
+        cleanup: true,
+      }
+    );
+  }
+
+  options(): any {
     return {
       mergeTags: {
         first_name: {

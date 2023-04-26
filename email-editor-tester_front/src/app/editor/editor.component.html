@@ -1,4 +1,21 @@
 <div class="container">
+  <form class="my-form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="templateNameInput">Enter the template's name:</label>
+      <input
+        id="templateNameInput"
+        name="templateNameInput"
+        type="text"
+        [(ngModel)]="templateName"
+        required
+      />
+      <div *ngIf="!templateName" class="error-message">
+        The template name is required
+      </div>
+    </div>
+    <button type="submit" (click)="saveTemplate()">Save</button>
+  </form>
+
   <button (click)="exportHtml()">Export</button>
   <email-editor
     (loaded)="editorLoaded()"

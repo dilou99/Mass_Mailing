@@ -1,4 +1,4 @@
-package com.example.email_editor_tester.user;
+package com.example.email_editor_tester.gallery;
 
 import javax.persistence.*;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonService } from '../services/json/json.service';
 import { Json } from '../shared/models/json';
-import { JsonService } from '../services/json.service';
 
 @Component({
   selector: 'app-gallerie',

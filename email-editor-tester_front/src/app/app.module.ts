@@ -1,8 +1,7 @@
 import { EmailEditorModule } from 'angular-email-editor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 import { EditorComponent } from './editor/editor.component';
@@ -14,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     EmailEditorModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
   ],

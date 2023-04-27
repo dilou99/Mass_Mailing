@@ -7,9 +7,10 @@ import { GallerieComponent } from './gallerie/gallerie.component';
 import { EditorComponent } from './editor/editor.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TemplateListComponent } from './template-list/template-list.component';
 
 @NgModule({
-  declarations: [AppComponent, GallerieComponent, EditorComponent],
+  declarations: [AppComponent, GallerieComponent, EditorComponent, TemplateListComponent],
   imports: [
     BrowserModule,
     EmailEditorModule,

@@ -8,6 +8,8 @@ import {
 import { EmailEditorComponent } from 'angular-email-editor';
 import { TemplateService } from '../services/template/template.service';
 import { Template } from '../shared/models/template';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editor',
@@ -18,25 +20,35 @@ export class EditorComponent implements OnInit {
   title = 'angular-email-editor';
   savedJson!: string;
   savedHtml!: string;
-  templateName: string = '';
+  templateName: any;
   template: Template = new Template();
+  id = +this.route.snapshot.params['id'];
 
   onSubmit() {
     if (!this.templateName) {
       alert('The template name is required');
       return;
     }
-
-    console.log('Template name:', this.templateName);
   }
-  constructor(private templateService: TemplateService) {}
+  constructor(
+    private templateService: TemplateService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   @Input() jsonLoad: any;
 
   @ViewChild(EmailEditorComponent)
   private emailEditor!: EmailEditorComponent;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.id);
+    if (this.id > 0) {
+      this.templateService.getTemplate(this.id).subscribe((template) => {
+        this.templateName = template.name;
+      });
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.emailEditor != null) {
@@ -56,8 +68,20 @@ export class EditorComponent implements OnInit {
         console.log('design:updated', type, item, changes);
       }
     );
-    const jsonLoadObj = JSON.parse(this.jsonLoad);
-    this.emailEditor.editor.loadDesign(jsonLoadObj);
+    if (this.id > 0) {
+      this.templateService.getTemplate(this.id).subscribe((template) => {
+        this.jsonLoad = template.jsonData;
+        const jsonLoadObj = JSON.parse(this.jsonLoad);
+        this.emailEditor.editor.loadDesign(jsonLoadObj);
+      });
+    } else {
+      if (this.jsonLoad) {
+        const jsonLoadObj = JSON.parse(this.jsonLoad);
+        this.emailEditor.editor.loadDesign(jsonLoadObj);
+      } else {
+        this.emailEditor.editor.loadDesign();
+      }
+    }
   }
 
   optionsLoaded() {
@@ -92,8 +116,8 @@ export class EditorComponent implements OnInit {
         var html = data.html;
         this.savedJson = JSON.stringify(json);
         this.savedHtml = html;
-        console.log(this.savedHtml, this.savedJson);
         const currentDate = new Date();
+
         if (this.templateName) {
           this.template = new Template(
             this.templateName,
@@ -101,8 +125,17 @@ export class EditorComponent implements OnInit {
             this.savedHtml,
             currentDate
           );
-          console.log(this.template);
-          this.templateService.addTemplate(this.template).subscribe();
+          if (this.id > 0) {
+            this.templateService
+              .updateTemplate(this.template, this.id)
+              .subscribe(() => {
+                this.router.navigateByUrl('/template-list');
+              });
+          } else {
+            this.templateService.addTemplate(this.template).subscribe(() => {
+              this.router.navigateByUrl('/template-list');
+            });
+          }
         }
       },
       {

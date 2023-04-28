@@ -6,7 +6,7 @@ import { TemplateListComponent } from './template-list/template-list.component';
 
 const routes: Routes = [
   { path: 'gallerie', component: GallerieComponent },
-  { path: 'editor', component: EditorComponent },
+  { path: 'editor/:id', component: EditorComponent },
   { path: 'template-list', component: TemplateListComponent },
 ];
 

@@ -1,6 +1,7 @@
 package com.example.email_editor_tester.templates;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,11 +37,12 @@ public class TemplateController {
     }
 
     @PutMapping(path = "{templateId}")
-    public void updateTemplate(
+    public ResponseEntity<Template> updateTemplate(
             @PathVariable("templateId") Long templateId,
             @RequestBody Template template
     ) {
-        templateService.updateTemplate(template);
+        Template savedTemplate = templateService.updateTemplate(templateId,template);
+        return ResponseEntity.ok(savedTemplate);
     }
 
 }

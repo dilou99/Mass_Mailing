@@ -36,11 +36,17 @@ public class TemplateService {
         templateRepository.deleteById(templateId);
     }
 
-    public void updateTemplate(Template template) {
-        Template currentTemplate = templateRepository.findById(template.getId())
+    public Template updateTemplate(Long id,Template template) {
+        Template templateToUpdate = templateRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException(
                         "Template with id " + template.getId() + " does not exist"));
 
-        templateRepository.save(template);
+        templateToUpdate.setName(template.getName());
+        templateToUpdate.setHtmlData(template.getHtmlData());
+        templateToUpdate.setJsonData(template.getJsonData());
+
+        Template savedTemplate = templateRepository.save(templateToUpdate);
+        return savedTemplate;
+
     }
 }

@@ -21,10 +21,10 @@ export class TemplateService {
     );
   }
 
-  addTemplate(user: Template): Observable<Template[]> {
+  addTemplate(template: Template): Observable<Template[]> {
     return this.http.post<Template[]>(
       'http://localhost:8080/api/v1/template',
-      user
+      template
     );
   }
 

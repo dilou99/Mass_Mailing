@@ -1,5 +1,7 @@
-package com.example.email_editor_tester.gallery;
+package com.example.email_editor_tester.config;
 
+import com.example.email_editor_tester.gallery.Json;
+import com.example.email_editor_tester.gallery.JsonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

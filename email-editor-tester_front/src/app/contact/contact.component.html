@@ -1,0 +1,46 @@
+<button class="add-new" (click)="sendEmail()">Send Email</button>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            id="select-all-checkbox"
+            class="center-checkbox"
+            (change)="selectAllContacts($event)"
+          />
+          <span class="checkbox-custom"></span>
+        </label>
+      </th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let contact of contacts | paginate : { itemsPerPage: 8, currentPage: p }
+      "
+    >
+      <td>
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            class="center-checkbox"
+            id="contact-{{ contact.id }}"
+            (change)="onContactChecked($event, contact.id)" /><span
+            class="checkbox-custom"
+          ></span
+        ></label>
+      </td>
+      <td>{{ contact.firstName }}</td>
+      <td>{{ contact.lastName }}</td>
+      <td>{{ contact.email }}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

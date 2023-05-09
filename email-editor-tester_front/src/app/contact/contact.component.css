@@ -1,0 +1,70 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    color: blue;
+  }
+
+
+
+  .add-new {
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2), 0px 0px 0px 2px #0077cc;
+    margin: 10px;
+    margin-left: 50px;
+  }
+  
+  .add-new:hover {
+    background-color: #0066aa;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3), 0px 0px 0px 2px #0066aa;
+    color: #fff;
+  }
+  
+  .add-new:active {
+    background-color: #005599;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2), 0px 0px 0px 2px #005599;
+    color: #fff;
+  }
+  
+  @import '~ngx-pagination/dist/ngx-pagination.css';
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+
+  th:first-child,
+  td:first-child {
+    text-align: center;
+  }
+  

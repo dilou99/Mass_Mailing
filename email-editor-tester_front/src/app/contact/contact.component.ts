@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../services/contact/contact.service';
 import { Contact } from '../shared/models/contact';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   p = 1;
   selectedContacts: any[] = [];
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService, private router: Router) {}
 
   ngOnInit(): void {
     this.contactService.getAllContacts().subscribe((contacts) => {
@@ -72,8 +72,11 @@ export class ContactComponent implements OnInit {
       });
     }
   }
-  sendEmail() {
+
+  navigateToMailConfigComponent() {
     this.selectedContacts.sort((a, b) => a - b);
-    console.log(this.selectedContacts);
+    const selectedContactsString = this.selectedContacts.join(',');
+
+    this.router.navigate(['/mail-config', selectedContactsString]);
   }
 }

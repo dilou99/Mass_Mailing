@@ -1,5 +1,11 @@
 <router-outlet></router-outlet>
-<a routerLink="/editor/0"><button>Go to Editor</button></a>
-<a routerLink="/gallerie"><button>Go to gallerie</button></a>
-<a routerLink="/template-list"><button>Go to templates list</button></a>
-<a routerLink="/contact"><button>Go to contact list</button></a>
+
+<div class="button-container">
+  <button (click)="showButtons()">x</button>
+  <div *ngIf="showButtonsFlag">
+    <a routerLink="/editor/0"><button>Go to Editor</button></a>
+    <a routerLink="/gallerie"><button>Go to gallerie</button></a>
+    <a routerLink="/template-list"><button>Go to templates list</button></a>
+    <a routerLink="/contact"><button>Go to contact list</button></a>
+  </div>
+</div>

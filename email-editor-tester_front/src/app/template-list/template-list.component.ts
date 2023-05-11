@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TemplateService } from '../services/template/template.service';
 import { Template } from '../shared/models/template';
 
@@ -12,6 +12,9 @@ export class TemplateListComponent implements OnInit {
   p = 1;
 
   constructor(private templateService: TemplateService) {}
+
+  @Input() inSelect: boolean = false;
+  @Output() onSelectTemplate: EventEmitter<any> = new EventEmitter<any>();
 
   ngOnInit(): void {
     this.templateService.getAllTemplates().subscribe((templates) => {
@@ -35,5 +38,9 @@ export class TemplateListComponent implements OnInit {
     if (previewWindow) {
       previewWindow.document.write(htmlContent);
     }
+  }
+
+  handleSelect(id: any) {
+    this.onSelectTemplate.emit(id);
   }
 }

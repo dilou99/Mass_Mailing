@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TemplateListComponent } from './template-list/template-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ContactComponent } from './contact/contact.component';
+import { MailConfigComponent } from './mail-config/mail-config.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ContactComponent } from './contact/contact.component';
     EditorComponent,
     TemplateListComponent,
     ContactComponent,
+    MailConfigComponent,
   ],
   imports: [
     BrowserModule,

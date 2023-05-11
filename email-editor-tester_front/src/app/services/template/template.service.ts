@@ -7,8 +7,6 @@ import { Template } from 'src/app/shared/models/template';
   providedIn: 'root',
 })
 export class TemplateService {
-  table: Template[] = [];
-
   constructor(private http: HttpClient) {}
 
   getAllTemplates(): Observable<Template[]> {

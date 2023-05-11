@@ -1,0 +1,12 @@
+.my-table {
+    border-collapse: collapse;
+  }
+  
+  .my-table td {
+    border: 1px solid transparent;
+    padding: 10px;
+  }
+  .my-table tr td:first-child {
+    color: gray;
+  }
+  

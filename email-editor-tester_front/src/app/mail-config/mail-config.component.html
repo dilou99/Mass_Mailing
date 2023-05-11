@@ -1,0 +1,77 @@
+<script
+  src="https://kit.fontawesome.com/a076d05399.js"
+  crossorigin="anonymous"
+></script>
+<table class="my-table">
+  <tr>
+    <td>To</td>
+    <td>
+      <p>{{ contactString }}</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Template</td>
+    <td>
+      <button (click)="toggleTemplateList()">Select Template</button>
+      <ng-container *ngIf="showTemplateList && selectedTemplateId == -1">
+        <app-template-list
+          [inSelect]="true"
+          (onSelectTemplate)="handleSelectTemplate($event)"
+        ></app-template-list>
+      </ng-container>
+      <ng-container *ngIf="selectedTemplateId > -1">
+        <div style="color: blue">Template: {{ selectedTemplateName }}</div>
+      </ng-container>
+    </td>
+  </tr>
+  <ng-container *ngIf="selectedTemplateId > -1">
+    <tr>
+      <td>Send options</td>
+      <td>
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="sendOption"
+              [(ngModel)]="sendOption"
+              value="immediate"
+            />
+            Send immediately
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              name="sendOption"
+              [(ngModel)]="sendOption"
+              value="later"
+            />
+            Schedule later
+          </label>
+        </div>
+        <div *ngIf="sendOption === 'later'">
+          <label>Date:</label>
+          <input type="date" [(ngModel)]="scheduledDate" />
+          <br />
+          <label>Time:</label>
+          <input type="time" [(ngModel)]="scheduledTime" />
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><i class="fas fa-mail-bulk"></i> Follow-up actions</td>
+      <td>
+        <a (click)="toggleDropdown()" style="color: blue">+trigger an action</a>
+        <div class="dropdown" *ngIf="showDropdown">
+          <ul>
+            <li (click)="emailOpened()">Email is opened</li>
+            <li (click)="emailClicked()">Email is clicked</li>
+            <li (click)="emailBounced()">Email is bounced</li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+  </ng-container>
+</table>
+<button (click)="sendEmail()">send email</button>
